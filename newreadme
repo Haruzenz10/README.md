@@ -2,3 +2,9 @@ const { execSync } = require("child_process");
 const msg = process.argv.slice(2).join(" ") || "update";
 ["git add .", `git commit -m "${msg}"`, "git push"].forEach(cmd => execSync(cmd, { stdio: "inherit" }));
 node push.js fix bug
+@echo off
+set MSG=%*
+if "%MSG%"=="" set MSG=update
+git add .
+git commit -m "%MSG%"
+git push
